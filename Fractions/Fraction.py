@@ -1,7 +1,12 @@
 class Fraction(object):
 
     def __init__(self, numerator=0, denominator=1):
-        #TODO
+        if not isinstance(numerator, int) or not isinstance(denominator, int) or denominator == 0:
+            raise ZeroDivisionError("Invalid input")
+        
+        gcd_value = Fraction.gcd(abs(numerator), abs(denominator))
+        self.numerator = numerator // gcd_value * (-1 if denominator < 0 else 1)
+        self.denominator = abs(denominator) // gcd_value
         pass
 
     def gcd(a, b):
@@ -12,11 +17,11 @@ class Fraction(object):
             low -= 1
 
     def get_numerator(self):
-        #TODO
+        return self.numerator
         pass
 
     def get_denominator(self):
-        #TODO
+        return self.denominator
         pass
 
     def get_fraction(self):
