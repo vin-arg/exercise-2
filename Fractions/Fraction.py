@@ -5,8 +5,11 @@ class Fraction(object):
         pass
 
     def gcd(a, b):
-        #TODO
-        pass
+        low = min(a, b)
+        while low > 0:
+            if (a % low == 0 and b % low == 0):
+                return low
+            low -= 1
 
     def get_numerator(self):
         #TODO
