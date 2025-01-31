@@ -10,20 +10,21 @@ class Fraction(object):
         pass
 
     def gcd(a, b):
-        low = min(a, b)
-        while low > 0:
-            if (a % low == 0 and b % low == 0):
-                return low
-            low -= 1
+        if a == 0 or b == 0:
+            return 0
+        while b != 0:
+            a , b = b, a % b
+        return a
 
     def get_numerator(self):
         return self.numerator
-        pass
 
     def get_denominator(self):
         return self.denominator
-        pass
 
     def get_fraction(self):
-        #TODO
-        pass
+        if self.numerator == 0:
+            return "0"
+        output = f"{self.numerator}/{self.denominator}"
+        return output
+        
