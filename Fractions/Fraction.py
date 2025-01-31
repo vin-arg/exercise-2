@@ -10,16 +10,16 @@ class Fraction(object):
 
         if not isinstance(numerator, int) or not isinstance(denominator, int):
             self.numerator = 0
-            self.denomiator = 1
+            self.denominator = 1
             return
         
         if denominator == 0:
             raise ZeroDivisionError("Invalid input")
         
-        gcd_value = Fraction.gcd(abs(numerator), abs(denominator))
+        gcd_value = max(1, Fraction.gcd(abs(numerator), abs(denominator)))
         self.numerator = numerator // gcd_value * (-1 if denominator < 0 else 1)
         self.denominator = abs(denominator) // gcd_value
-        pass
+        
 
     def gcd(a, b):
         if a == 0 or b == 0:
@@ -37,5 +37,5 @@ class Fraction(object):
     def get_fraction(self):
         if self.numerator == 0:
             return "0"
-        return f"{self.numerator}/{self.denominator}" if self.denominator != 1 else str(self.numerator)
+        return f"{self.numerator}/{self.denominator}" if self.denominator != 1 else f"{self.numerator}"
         
